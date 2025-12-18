@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -24,7 +24,7 @@ const treatments = [
 
 const timeSlots = ["9:00 AM", "10:30 AM", "12:00 PM", "2:00 PM", "3:30 PM", "5:00 PM"]
 
-export function BookingSection() {
+function BookingContent() {
   const searchParams = useSearchParams()
   const preSelectedService = searchParams.get('service')
   
@@ -459,5 +459,13 @@ export function BookingSection() {
         </div>
       </div>
     </section>
+  )
+}
+
+export function BookingSection() {
+  return (
+    <Suspense fallback={<div className="py-32 md:py-40 bg-card" />}>
+      <BookingContent />
+    </Suspense>
   )
 }
