@@ -23,25 +23,6 @@ export default function ServicesPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
 
   const getFilteredServices = () => {
-    const params = new URLSearchParams(window.location.search)
-    const urlCategory = params.get('category')
-    
-    if (urlCategory === 'skin-treatments') {
-      return services.filter(s => s.category === 'Facial Treatments' || s.category === 'Body Sculpting')
-    }
-    if (urlCategory === 'body-contouring') {
-      return services.filter(s => s.category === 'Body Sculpting')
-    }
-    if (urlCategory === 'hair-restoration') {
-      return services.filter(s => s.id === 'hair-restoration')
-    }
-    if (urlCategory === 'fungal-treatment') {
-      return services.filter(s => s.id === 'nail-fungus')
-    }
-    if (urlCategory === 'iv-wellness') {
-      return services.filter(s => s.category === 'Wellness')
-    }
-    
     if (selectedCategory === "all") return services
     return services.filter(s => s.category === selectedCategory)
   }
