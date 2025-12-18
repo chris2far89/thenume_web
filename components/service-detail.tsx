@@ -31,6 +31,7 @@ const serviceImages: Record<string, string> = {
   "anti-aging-rejuvenation": "/anti-aging.png",
   "mens-detox-facial": "/facial_for_men.png",
   "deep-cleanse-combo": "/deep_cleanse_extractions.png",
+  "mens-bald-head-facial": "/bald_treatment.jpg",
   "stretch-mark-removal": "/stretch_mark.png",
   "dark-knuckle-treatment": "/luxury-spa-interior-zen-minimalist-stone-water-fea.jpg"
 }
