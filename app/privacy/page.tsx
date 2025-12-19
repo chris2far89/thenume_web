@@ -65,6 +65,31 @@ export default function PrivacyPage() {
             </div>
 
             <div>
+              <h2 className="font-[var(--font-display)] text-2xl font-light text-foreground mb-4">POPI Act Compliance</h2>
+              <p className="mb-3">
+                TheNumé is committed to complying with the Protection of Personal Information Act (POPI Act) of South Africa. We process your personal information lawfully, fairly, and transparently. Under POPI, you have the following rights:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Right to be notified about the collection and use of your personal information</li>
+                <li>Right to access your personal information we hold</li>
+                <li>Right to correct or update inaccurate personal information</li>
+                <li>Right to delete your personal information (subject to legal requirements)</li>
+                <li>Right to object to the processing of your personal information</li>
+                <li>Right to lodge a complaint with the Information Regulator</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="font-[var(--font-display)] text-2xl font-light text-foreground mb-4">Cookies and Tracking</h2>
+              <p className="mb-3">
+                We use cookies and similar tracking technologies to enhance your browsing experience, analyze site usage, and provide personalized content. Cookies are small data files stored on your device. You can control cookie settings through your browser, but disabling cookies may affect site functionality.
+              </p>
+              <p>
+                By continuing to use our website, you consent to our use of cookies as described in this policy.
+              </p>
+            </div>
+
+            <div>
               <h2 className="font-[var(--font-display)] text-2xl font-light text-foreground mb-4">Your Rights</h2>
               <p className="mb-3">You have the right to:</p>
               <ul className="list-disc pl-6 space-y-2">
@@ -73,6 +98,7 @@ export default function PrivacyPage() {
                 <li>Request deletion of your information</li>
                 <li>Opt-out of marketing communications</li>
                 <li>Withdraw consent at any time</li>
+                <li>File a complaint with the Information Regulator of South Africa</li>
               </ul>
             </div>
 

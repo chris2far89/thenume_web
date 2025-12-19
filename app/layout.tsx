@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Cormorant_Garamond, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { CookieConsent } from "@/components/cookie-consent"
 import "./globals.css"
 
 const cormorant = Cormorant_Garamond({
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <CookieConsent />
         <Analytics />
       </body>
     </html>
