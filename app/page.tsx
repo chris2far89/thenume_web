@@ -72,19 +72,19 @@ export default function Home() {
               )}
             >
               <p className="font-[var(--font-body)] text-xs tracking-[0.4em] uppercase text-muted-foreground mb-4">
-                About TheNumé
+                Plasma Energy Technology
               </p>
               <h1 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-[0.02em] leading-[1.1] mb-6">
-                Where authentic beauty meets conscious innovation
+                The future of skin transformation
               </h1>
               <p className="font-[var(--font-body)] text-base text-muted-foreground font-light leading-relaxed mb-6">
-                We don't change who you are — we reveal your best self. Through trust, innovation, and care, we create a sanctuary where transformation feels effortless.
+                At TheNumé, we harness the revolutionary power of Plasma Energy — the fourth state of matter — to deliver unparalleled skin rejuvenation and transformation.
               </p>
               <p className="font-[var(--font-body)] text-base text-muted-foreground font-light leading-relaxed mb-6">
-                At TheNumé, we believe beauty begins with authenticity. Every treatment is designed to help you embrace your true self — renewed, confident, and radiant. We blend science-backed solutions with sustainable elegance, ensuring every experience leaves a lasting impression of confidence and well-being.
+                This cutting-edge technology works at the cellular level, stimulating natural collagen production, tightening skin instantly, and promoting deep regeneration without invasive procedures. From wrinkle reduction to skin tightening, hair restoration to scar treatment — Plasma Energy delivers visible, lasting results.
               </p>
               <p className="font-[var(--font-body)] text-base text-muted-foreground font-light leading-relaxed">
-                Our commitment extends beyond exceptional service — we champion eco-conscious products that honor both your skin and the environment, making effortless beauty accessible to everyone, everywhere.
+                Experience the science of tomorrow, today. Where innovation meets beauty, and transformation becomes effortless.
               </p>
             </div>
             <div
@@ -94,8 +94,8 @@ export default function Home() {
               )}
             >
               <Image
-                src="/luxury-spa-interior-warm-lighting-minimalist-zen.jpg"
-                alt="TheNumé Interior"
+                src="/plasma.png"
+                alt="Plasma Energy Technology"
                 fill
                 className="object-cover"
               />
@@ -178,6 +178,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Consultation Call to Action */}
+      <section className="py-20 md:py-28 bg-black">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <p className="font-[var(--font-body)] text-xs tracking-[0.4em] uppercase text-white/60 mb-4">
+            Professional Consultation
+          </p>
+          <h2 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-[0.02em] leading-[1.1] mb-6">
+            Begin with a consultation
+          </h2>
+          <p className="font-[var(--font-body)] text-base text-white/80 font-light leading-relaxed mb-8 max-w-2xl mx-auto">
+            We ensure every consultation is a premium, personalised experience designed to deliver real, transformative, and lasting results.
+          </p>
+          <div className="space-y-3 mb-12 max-w-xl mx-auto">
+            <p className="font-[var(--font-body)] text-sm text-white/70 font-light">
+              Expert assessment of your key concerns and goals
+            </p>
+            <p className="font-[var(--font-body)] text-sm text-white/70 font-light">
+              Tailored treatment plan using advanced diagnostic insights
+            </p>
+            <p className="font-[var(--font-body)] text-sm text-white/70 font-light">
+              Comprehensive home-care prescription
+            </p>
+          </div>
+          <div className="space-y-4">
+            <a
+              href="/#booking?service=consultation-virtual"
+              className="inline-block font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-8 py-4 bg-white text-black hover:bg-white/90 transition-colors duration-300 mr-4"
+            >
+              Virtual - R250
+            </a>
+            <a
+              href="/#booking?service=consultation-person"
+              className="inline-block font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              In-Person - R395
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form Section */}
       <section ref={contactRef} className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -203,9 +243,11 @@ export default function Home() {
                   <MapPin className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <p className="font-[var(--font-body)] text-sm text-foreground font-light leading-relaxed">
-                      123 Wellness Boulevard
+                      8 Tin Rd, Bromhof
                       <br />
-                      Beverly Hills, CA 90210
+                      Randburg, 2154
+                      <br />
+                      South Africa
                     </p>
                   </div>
                 </div>
@@ -213,7 +255,7 @@ export default function Home() {
                   <Phone className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <p className="font-[var(--font-body)] text-sm text-foreground font-light">
-                      +1 (555) 234-5678
+                      +27 76 040 1540
                     </p>
                   </div>
                 </div>
@@ -221,7 +263,7 @@ export default function Home() {
                   <Mail className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <p className="font-[var(--font-body)] text-sm text-foreground font-light">
-                      reservations@thenume.com
+                      @thenu.me_za
                     </p>
                   </div>
                 </div>
