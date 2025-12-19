@@ -12,7 +12,7 @@ interface ServiceDetailProps {
 }
 
 const serviceImages: Record<string, string> = {
-  consultation: "/luxury-spa-interior-warm-lighting-minimalist-zen.jpg",
+  consultation: "/consultation.png",
   "fat-dissolving": "/Fat_dissolving_injections.png",
   "fat-freeze": "/fat_freeze.png",
   "cavitation-rf-g5": "/Cavitation_radio_frequencyG5_slimming.png",
@@ -22,18 +22,18 @@ const serviceImages: Record<string, string> = {
   "iv-drip": "/iv_drip.png",
   "hair-restoration": "/hair_restoration.png",
   "nail-fungus": "/nail_fungus.png",
-  "prp-vampire-facial": "/vampire_facial.png",
-  "microneedling-dermaplaning-led": "/microneedling_dermaplaning_led_light.png",
+  "prp-vampire-facial": "/prp.jpg",
+  "microneedling-dermaplaning-led": "/microneedling_plasma energy_dermaplaning.png",
   "pigmentation-brightening": "/microneedling_dermaplaning_superficial.png",
   "acne-peel": "/acne_peel.png",
   "glow-combo": "/glow_combo.png",
   "zena-algae-peel": "/algae_peel.png",
   "anti-aging-rejuvenation": "/anti-aging.png",
   "mens-detox-facial": "/facial_for_men.png",
-  "deep-cleanse-combo": "/deep_cleanse_extractions.png",
+  "deep-cleanse-combo": "/deep_cleanse.jpg",
   "mens-bald-head-facial": "/bald_treatment.jpg",
   "stretch-mark-removal": "/stretch_mark.png",
-  "dark-knuckle-treatment": "/luxury-spa-interior-zen-minimalist-stone-water-fea.jpg"
+  "dark-knuckle-treatment": "/dark_knuckles.png"
 }
 
 export function ServiceDetail({ service, index }: ServiceDetailProps) {

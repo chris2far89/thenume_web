@@ -236,7 +236,7 @@ export const services: Service[] = [
   },
   {
     id: "nail-fungus",
-    category: "Skin Treatments",
+    category: "Fungal Treatments",
     title: "Nail Fungus Removal – Plasma Treatment",
     price: "R300 per session | Full 8-session package: R2,000 (Save R400)",
     bookingOptions: [
@@ -469,7 +469,7 @@ export const services: Service[] = [
   },
   {
     id: "mens-detox-facial",
-    category: "Facial Treatments",
+    category: "Men's Treatments",
     title: "Men's Detox Facial",
     price: "R850",
     bookingOptions: [{ id: "mens-detox", name: "Men's Detox Facial", price: 850 }],
@@ -497,7 +497,7 @@ export const services: Service[] = [
   },
   {
     id: "mens-bald-head-facial",
-    category: "Facial Treatments",
+    category: "Men's Treatments",
     title: "Men's Bald Head Facial",
     price: "R400",
     bookingOptions: [{ id: "mens-bald-head", name: "Men's Bald Head Facial", price: 400 }],
@@ -555,7 +555,7 @@ export const services: Service[] = [
 ,
   {
     id: "dark-knuckle-treatment",
-    category: "Body Treatments",
+    category: "Skin Treatments",
     title: "Dark Knuckle Treatment",
     price: "R2,000 (Full 8-Session Package)",
     bookingOptions: [{ id: "dark-knuckle", name: "8-Session Package", price: 2000 }],
@@ -578,7 +578,7 @@ export const services: Service[] = [
   },
   {
     id: "stretch-mark-removal",
-    category: "Body Treatments",
+    category: "Skin Treatments",
     title: "Stretch Mark Removal Package",
     price: "8 Sessions: R8,800 | Pay Per Session: R1,500",
     bookingOptions: [

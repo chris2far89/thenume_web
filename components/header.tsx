@@ -83,6 +83,9 @@ export function Header() {
                   <Link href="/iv-wellness" className="block px-6 py-4 hover:bg-muted transition-colors duration-300">
                     <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-foreground">IV Infusion + Wellness</span>
                   </Link>
+                  <Link href="/mens-treatments" className="block px-6 py-4 hover:bg-muted transition-colors duration-300">
+                    <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-foreground">Men's Treatments</span>
+                  </Link>
                   <Link href="/services" className="block px-6 py-4 bg-primary/5 hover:bg-primary/10 transition-colors duration-300">
                     <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-primary">View All Treatments</span>
                   </Link>
@@ -161,7 +164,7 @@ export function Header() {
         <div
           className={cn(
             "md:hidden overflow-hidden transition-all duration-500 ease-out",
-            mobileMenuOpen ? "max-h-64 opacity-100 mt-8" : "max-h-0 opacity-0",
+            mobileMenuOpen ? "max-h-80 opacity-100 mt-8" : "max-h-0 opacity-0",
           )}
         >
           <div className="flex flex-col gap-6 py-4">
@@ -196,6 +199,9 @@ export function Header() {
                   </Link>
                   <Link href="/iv-wellness" onClick={() => setMobileMenuOpen(false)} className="block">
                     <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-foreground">IV Infusion + Wellness</span>
+                  </Link>
+                  <Link href="/mens-treatments" onClick={() => setMobileMenuOpen(false)} className="block">
+                    <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-foreground">Men's Treatments</span>
                   </Link>
                   <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="block">
                     <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-primary">View All</span>
