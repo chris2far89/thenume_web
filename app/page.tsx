@@ -37,7 +37,7 @@ export default function Home() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[70vh] md:h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-primary/90">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -55,9 +55,7 @@ export default function Home() {
             <span className="block">Rediscover</span>
             <span className="block">Your Radiance</span>
           </h1>
-          <p className="font-[var(--font-body)] text-sm md:text-base text-primary-foreground/70 font-light tracking-wide max-w-xl mx-auto leading-relaxed">
-            Authentic transformation through simplicity, innovation, and care
-          </p>
+
         </div>
       </section>
 

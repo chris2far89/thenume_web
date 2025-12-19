@@ -70,11 +70,15 @@ export function Footer() {
             <div className="space-y-3">
               <div>
                 <p className="font-[var(--font-body)] text-sm text-foreground font-light">Mon – Fri</p>
-                <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">9:00 AM – 8:00 PM</p>
+                <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">8:00 AM – 6:00 PM</p>
               </div>
               <div>
-                <p className="font-[var(--font-body)] text-sm text-foreground font-light">Sat – Sun</p>
-                <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">10:00 AM – 6:00 PM</p>
+                <p className="font-[var(--font-body)] text-sm text-foreground font-light">Saturday</p>
+                <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">9:00 AM – 5:00 PM</p>
+              </div>
+              <div>
+                <p className="font-[var(--font-body)] text-sm text-foreground font-light">Sun & Holidays</p>
+                <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">9:00 AM – 3:00 PM</p>
               </div>
             </div>
           </div>

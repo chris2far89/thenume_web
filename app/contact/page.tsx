@@ -65,13 +65,16 @@ export default function ContactPage() {
                   <h3 className="font-[var(--font-display)] text-xl font-light text-foreground mb-2">Hours</h3>
                   <div className="space-y-2">
                     <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">
-                      Monday – Friday: 9:00 AM – 7:00 PM
+                      Monday – Friday: 8:00 AM – 6:00 PM
                     </p>
                     <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">
                       Saturday: 9:00 AM – 5:00 PM
                     </p>
                     <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">
-                      Sunday: 10:00 AM – 4:00 PM
+                      Sunday: 9:00 AM – 3:00 PM
+                    </p>
+                    <p className="font-[var(--font-body)] text-sm text-muted-foreground font-light">
+                      Holidays: 9:00 AM – 3:00 PM
                     </p>
                   </div>
                 </div>

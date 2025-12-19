@@ -1,14 +1,18 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { ChevronDown } from "lucide-react"
 
 export function Header() {
+  const pathname = usePathname()
+  const isHomepage = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [treatmentsOpen, setTreatmentsOpen] = useState(false)
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +36,7 @@ export function Header() {
             <span
               className={cn(
                 "font-[var(--font-display)] text-2xl md:text-3xl font-light tracking-[0.15em] uppercase transition-colors duration-500",
-                scrolled || mobileMenuOpen ? "text-foreground" : "text-white",
+                scrolled || mobileMenuOpen ? "text-foreground" : isHomepage ? "text-white" : "text-foreground",
               )}
             >
               TheNumé
@@ -45,27 +49,43 @@ export function Header() {
               href="/about"
               className={cn(
                 "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:opacity-60",
-                scrolled || mobileMenuOpen ? "text-foreground" : "text-white",
+                scrolled || mobileMenuOpen ? "text-foreground" : isHomepage ? "text-white" : "text-foreground",
               )}
             >
               About
             </Link>
             <div 
               className="relative"
-              onMouseEnter={() => setTreatmentsOpen(true)}
-              onMouseLeave={() => setTreatmentsOpen(false)}
+              onMouseEnter={() => {
+                if (hoverTimeout) clearTimeout(hoverTimeout)
+                setTreatmentsOpen(true)
+              }}
+              onMouseLeave={() => {
+                const timeout = setTimeout(() => setTreatmentsOpen(false), 300)
+                setHoverTimeout(timeout)
+              }}
             >
               <button
                 className={cn(
                   "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:opacity-60 flex items-center gap-1",
-                  scrolled || mobileMenuOpen ? "text-foreground" : "text-white",
+                  scrolled || mobileMenuOpen ? "text-foreground" : isHomepage ? "text-white" : "text-foreground",
                 )}
               >
                 Treatments
                 <ChevronDown className="w-3 h-3" />
               </button>
               {treatmentsOpen && (
-                <div className="absolute top-full left-0 mt-4 w-64 bg-background border border-border shadow-lg z-50">
+                <div 
+                  className="absolute top-full left-0 mt-4 w-64 bg-background border border-border shadow-lg z-50"
+                  onMouseEnter={() => {
+                    if (hoverTimeout) clearTimeout(hoverTimeout)
+                    setTreatmentsOpen(true)
+                  }}
+                  onMouseLeave={() => {
+                    const timeout = setTimeout(() => setTreatmentsOpen(false), 300)
+                    setHoverTimeout(timeout)
+                  }}
+                >
                   <Link href="/skin-treatments" className="block px-6 py-4 hover:bg-muted transition-colors duration-300">
                     <span className="font-[var(--font-body)] text-xs tracking-[0.1em] uppercase text-foreground">Skin Treatments</span>
                     <p className="font-[var(--font-body)] text-xs text-muted-foreground mt-1">Facial & Skin</p>
@@ -92,20 +112,12 @@ export function Header() {
                 </div>
               )}
             </div>
-            <Link
-              href="/approach"
-              className={cn(
-                "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:opacity-60",
-                scrolled || mobileMenuOpen ? "text-foreground" : "text-white",
-              )}
-            >
-              Approach
-            </Link>
+
             <Link
               href="/blog"
               className={cn(
                 "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:opacity-60",
-                scrolled || mobileMenuOpen ? "text-foreground" : "text-white",
+                scrolled || mobileMenuOpen ? "text-foreground" : isHomepage ? "text-white" : "text-foreground",
               )}
             >
               Blog
@@ -114,7 +126,7 @@ export function Header() {
               href="/contact"
               className={cn(
                 "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:opacity-60",
-                scrolled || mobileMenuOpen ? "text-foreground" : "text-white",
+                scrolled || mobileMenuOpen ? "text-foreground" : isHomepage ? "text-white" : "text-foreground",
               )}
             >
               Contact
@@ -129,7 +141,7 @@ export function Header() {
                 "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-6 py-3 border transition-all duration-500",
                 scrolled || mobileMenuOpen
                   ? "border-foreground text-foreground hover:bg-foreground hover:text-background"
-                  : "border-white text-white hover:bg-white hover:text-black",
+                  : isHomepage ? "border-white text-white hover:bg-white hover:text-black" : "border-foreground text-foreground hover:bg-foreground hover:text-background",
               )}
             >
               Book Now
@@ -145,15 +157,15 @@ export function Header() {
             <span
               className={cn(
                 "w-6 h-px transition-all duration-300",
-                scrolled || mobileMenuOpen ? "bg-foreground" : "bg-white",
+                scrolled || mobileMenuOpen ? "bg-foreground" : isHomepage ? "bg-white" : "bg-foreground",
                 mobileMenuOpen && "rotate-45 translate-y-2",
               )}
             />
-            <span className={cn("w-6 h-px transition-all duration-300", scrolled || mobileMenuOpen ? "bg-foreground" : "bg-white", mobileMenuOpen && "opacity-0")} />
+            <span className={cn("w-6 h-px transition-all duration-300", scrolled || mobileMenuOpen ? "bg-foreground" : isHomepage ? "bg-white" : "bg-foreground", mobileMenuOpen && "opacity-0")} />
             <span
               className={cn(
                 "w-6 h-px transition-all duration-300",
-                scrolled || mobileMenuOpen ? "bg-foreground" : "bg-white",
+                scrolled || mobileMenuOpen ? "bg-foreground" : isHomepage ? "bg-white" : "bg-foreground",
                 mobileMenuOpen && "-rotate-45 -translate-y-2",
               )}
             />
@@ -209,13 +221,7 @@ export function Header() {
                 </div>
               )}
             </div>
-            <Link
-              href="/approach"
-              onClick={() => setMobileMenuOpen(false)}
-              className="font-[var(--font-body)] text-sm tracking-[0.15em] uppercase text-foreground"
-            >
-              Approach
-            </Link>
+
             <Link
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}

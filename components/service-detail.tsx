@@ -24,7 +24,7 @@ const serviceImages: Record<string, string> = {
   "nail-fungus": "/nail_fungus.png",
   "prp-vampire-facial": "/prp.jpg",
   "microneedling-dermaplaning-led": "/microneedling_plasma energy_dermaplaning.png",
-  "pigmentation-brightening": "/microneedling_dermaplaning_superficial.png",
+  "pigmentation-brightening": "/microneedling_plasma energy_dermaplanning_and_superficial_peel.png",
   "acne-peel": "/acne_peel.png",
   "glow-combo": "/glow_combo.png",
   "zena-algae-peel": "/algae_peel.png",
