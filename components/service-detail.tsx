@@ -178,7 +178,7 @@ export function ServiceDetail({ service, index }: ServiceDetailProps) {
                 {service.bookingOptions.map((option) => (
                   <Link
                     key={option.id}
-                    href={`/#booking?service=${option.id}`}
+                    href={`/book?service=${option.id}`}
                     className="flex justify-between items-center p-4 border border-border hover:border-primary transition-colors duration-300 group"
                   >
                     <span className="font-[var(--font-body)] text-sm text-foreground group-hover:text-primary">
@@ -192,7 +192,7 @@ export function ServiceDetail({ service, index }: ServiceDetailProps) {
               </div>
             ) : (
               <Link
-                href={`/#booking?service=${service.bookingOptions?.[0]?.id || service.id}`}
+                href={`/book?service=${service.bookingOptions?.[0]?.id || service.id}`}
                 className="inline-block font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-8 py-4 bg-foreground text-background hover:bg-foreground/90 transition-colors duration-300"
               >
                 Book This Treatment

@@ -5,22 +5,66 @@ import { useSearchParams } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import { Check, ChevronRight } from "lucide-react"
+import { Check, ChevronRight, ChevronDown } from "lucide-react"
 
-const treatments = [
-  { id: "consultation", name: "Virtual Consultation", duration: "30 min", price: 250 },
-  { id: "consultation-person", name: "In-Person Consultation", duration: "45 min", price: 395 },
-  { id: "fat-dissolving", name: "Fat Dissolving Injections", duration: "60 min", price: 1050 },
-  { id: "fat-freeze", name: "Fat Freeze", duration: "60 min", price: 500 },
-  { id: "cavitation", name: "Cavitation, RF & G5 Combo", duration: "60 min", price: 800 },
-  { id: "cellulite", name: "Cellulite Reduction", duration: "60 min", price: 800 },
-  { id: "wood-therapy", name: "Wood Therapy + G5", duration: "60 min", price: 600 },
-  { id: "iv-drip", name: "IV Drip Therapy", duration: "45 min", price: 800 },
-  { id: "prp-facial", name: "PRP Vampire Facial", duration: "90 min", price: 2000 },
-  { id: "microneedling", name: "Microneedling + Dermaplaning + LED", duration: "75 min", price: 950 },
-  { id: "acne-peel", name: "Acne Peel + High Frequency", duration: "45 min", price: 500 },
-  { id: "glow-combo", name: "Glow Combo", duration: "60 min", price: 800 },
-]
+const treatmentCategories = {
+  "Consultation": [
+    { id: "consultation-virtual", name: "Virtual Consultation", duration: "30 min", price: 250 },
+    { id: "consultation-person", name: "In-Person Consultation", duration: "45 min", price: 395 },
+  ],
+  "Body Sculpting": [
+    { id: "fat-dissolving-face", name: "Lipo Vela V-Line (Face)", duration: "60 min", price: 1050 },
+    { id: "fat-dissolving-body", name: "Lipo Vela (Body)", duration: "60 min", price: 1350 },
+    { id: "fat-dissolving-lemon", name: "Lemon Bottle", duration: "60 min", price: 2000 },
+    { id: "fat-freeze-one", name: "Fat Freeze (One Applicator)", duration: "60 min", price: 500 },
+    { id: "fat-freeze-two", name: "Fat Freeze (Two Applicators)", duration: "60 min", price: 1000 },
+    { id: "cavitation-rf-g5", name: "Cavitation, RF & G5 Combo", duration: "60 min", price: 800 },
+    { id: "cellulite-reduction", name: "Cellulite Reduction", duration: "60 min", price: 800 },
+    { id: "wood-therapy", name: "Wood Therapy + G5", duration: "60 min", price: 600 },
+  ],
+  "Facial Treatments": [
+    { id: "prp-face", name: "PRP Vampire Facial (Face)", duration: "90 min", price: 2000 },
+    { id: "prp-full", name: "PRP Vampire Facial (Face, Neck & Chest)", duration: "90 min", price: 2800 },
+    { id: "microneedling-face-neck", name: "Microneedling + Dermaplaning + LED (Face & Neck)", duration: "75 min", price: 1050 },
+    { id: "microneedling-full", name: "Microneedling + Dermaplaning + LED (Face, Neck & Chest)", duration: "75 min", price: 1500 },
+    { id: "pigmentation-brightening", name: "Pigmentation Brightening Treatment", duration: "75 min", price: 1750 },
+    { id: "acne-face", name: "Acne Peel + High Frequency (Face)", duration: "45 min", price: 500 },
+    { id: "acne-body", name: "Acne Peel + High Frequency (Body)", duration: "60 min", price: 950 },
+    { id: "glow-combo", name: "Glow Combo", duration: "60 min", price: 800 },
+    { id: "zena-face", name: "Zena Algae Peel (Face)", duration: "60 min", price: 800 },
+    { id: "zena-body", name: "Zena Algae Peel (Body)", duration: "90 min", price: 1500 },
+    { id: "anti-aging", name: "Anti-Aging Rejuvenation", duration: "90 min", price: 1800 },
+    { id: "deep-cleanse", name: "Deep Cleanse Combo", duration: "60 min", price: 800 },
+  ],
+  "Men's Treatments": [
+    { id: "mens-detox", name: "Men's Detox Facial", duration: "60 min", price: 850 },
+    { id: "mens-bald-head", name: "Men's Bald Head Facial", duration: "45 min", price: 400 },
+  ],
+  "Skin Treatments": [
+    { id: "skin-tag-20", name: "Skin Tag Removal (20 min)", duration: "20 min", price: 650 },
+    { id: "skin-tag-40", name: "Skin Tag Removal (40 min)", duration: "40 min", price: 1000 },
+    { id: "skin-tag-60", name: "Skin Tag Removal (1 hour)", duration: "60 min", price: 1500 },
+    { id: "dark-knuckle", name: "Dark Knuckle Treatment (8 Sessions)", duration: "30 min", price: 2000 },
+    { id: "stretch-single", name: "Stretch Mark Removal (Single)", duration: "60 min", price: 1500 },
+    { id: "stretch-package", name: "Stretch Mark Removal (8 Sessions)", duration: "60 min", price: 8800 },
+  ],
+  "Hair & Scalp": [
+    { id: "hair-single", name: "Hair Restoration (Single)", duration: "60 min", price: 1200 },
+    { id: "hair-package", name: "Hair Restoration (12 Sessions)", duration: "60 min", price: 12000 },
+  ],
+  "Wellness": [
+    { id: "iv-glow", name: "Skin Lightening Glow Drip", duration: "45 min", price: 800 },
+    { id: "iv-energy", name: "Energy Booster Drip", duration: "45 min", price: 900 },
+    { id: "iv-sports", name: "Sports Recovery Drip", duration: "45 min", price: 1000 },
+    { id: "iv-detox", name: "Detox Wellness Drip", duration: "45 min", price: 900 },
+  ],
+  "Fungal Treatments": [
+    { id: "nail-single", name: "Nail Fungus Removal (Single)", duration: "30 min", price: 300 },
+    { id: "nail-package", name: "Nail Fungus Removal (8 Sessions)", duration: "30 min", price: 2000 },
+  ],
+}
+
+const treatments = Object.values(treatmentCategories).flat()
 
 const timeSlots = ["9:00 AM", "10:30 AM", "12:00 PM", "2:00 PM", "3:30 PM", "5:00 PM"]
 
@@ -32,6 +76,7 @@ function BookingContent() {
   const [selectedTreatment, setSelectedTreatment] = useState<string | null>(null)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set(["Consultation"]))
   const [isNewUser, setIsNewUser] = useState(true)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -65,6 +110,16 @@ function BookingContent() {
 
     return () => observer.disconnect()
   }, [])
+
+  const toggleCategory = (category: string) => {
+    const newOpenCategories = new Set(openCategories)
+    if (newOpenCategories.has(category)) {
+      newOpenCategories.delete(category)
+    } else {
+      newOpenCategories.add(category)
+    }
+    setOpenCategories(newOpenCategories)
+  }
 
   const handleNext = () => {
     if (step < 4) setStep(step + 1)
@@ -176,39 +231,69 @@ function BookingContent() {
             )}
           >
             {step === 1 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {treatments.map((treatment) => (
-                  <button
-                    key={treatment.id}
-                    onClick={() => setSelectedTreatment(treatment.id)}
-                    className={cn(
-                      "p-6 text-left border transition-all duration-300 group",
-                      selectedTreatment === treatment.id
-                        ? "border-primary bg-primary/5"
-                        : "border-border hover:border-primary/50",
-                    )}
-                  >
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="font-[var(--font-display)] text-xl font-light text-foreground">
-                        {treatment.name}
-                      </h3>
+              <div className="space-y-4">
+                {Object.entries(treatmentCategories).map(([category, categoryTreatments]) => {
+                  const isOpen = openCategories.has(category)
+                  return (
+                    <div key={category} className="border border-border">
+                      <button
+                        onClick={() => toggleCategory(category)}
+                        className="w-full flex justify-between items-center p-6 text-left hover:bg-primary/5 transition-colors duration-300"
+                      >
+                        <h3 className="font-[var(--font-display)] text-2xl font-light text-foreground">
+                          {category}
+                        </h3>
+                        <ChevronDown
+                          className={cn(
+                            "w-5 h-5 text-muted-foreground transition-transform duration-300",
+                            isOpen ? "rotate-180" : "rotate-0"
+                          )}
+                        />
+                      </button>
                       <div
                         className={cn(
-                          "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300",
-                          selectedTreatment === treatment.id ? "border-primary bg-primary" : "border-muted-foreground",
+                          "overflow-hidden transition-all duration-300 ease-out",
+                          isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                         )}
                       >
-                        {selectedTreatment === treatment.id && <Check className="w-3 h-3 text-primary-foreground" />}
+                        <div className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {categoryTreatments.map((treatment) => (
+                            <button
+                              key={treatment.id}
+                              onClick={() => setSelectedTreatment(treatment.id)}
+                              className={cn(
+                                "p-6 text-left border transition-all duration-300 group",
+                                selectedTreatment === treatment.id
+                                  ? "border-primary bg-primary/5"
+                                  : "border-border hover:border-primary/50",
+                              )}
+                            >
+                              <div className="flex justify-between items-start mb-4">
+                                <h4 className="font-[var(--font-display)] text-xl font-light text-foreground">
+                                  {treatment.name}
+                                </h4>
+                                <div
+                                  className={cn(
+                                    "w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300",
+                                    selectedTreatment === treatment.id ? "border-primary bg-primary" : "border-muted-foreground",
+                                  )}
+                                >
+                                  {selectedTreatment === treatment.id && <Check className="w-3 h-3 text-primary-foreground" />}
+                                </div>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="font-[var(--font-body)] text-xs tracking-[0.15em] uppercase text-muted-foreground">
+                                  {treatment.duration}
+                                </span>
+                                <span className="font-[var(--font-display)] text-lg text-foreground">R{treatment.price}</span>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="font-[var(--font-body)] text-xs tracking-[0.15em] uppercase text-muted-foreground">
-                        {treatment.duration}
-                      </span>
-                      <span className="font-[var(--font-display)] text-lg text-foreground">R{treatment.price}</span>
-                    </div>
-                  </button>
-                ))}
+                  )
+                })}
               </div>
             )}
           </div>
