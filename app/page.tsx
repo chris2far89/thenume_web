@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { WhatsAppChat } from "@/components/whatsapp-chat"
 import Image from "next/image"
 import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
@@ -201,13 +202,13 @@ export default function Home() {
           </div>
           <div className="space-y-4">
             <a
-              href="/#booking?service=consultation-virtual"
+              href="/book?service=consultation-virtual"
               className="inline-block font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-8 py-4 bg-white text-black hover:bg-white/90 transition-colors duration-300 mr-4"
             >
               Virtual - R250
             </a>
             <a
-              href="/#booking?service=consultation-person"
+              href="/book?service=consultation-person"
               className="inline-block font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-8 py-4 border border-white text-white hover:bg-white hover:text-black transition-colors duration-300"
             >
               In-Person - R395
@@ -328,6 +329,7 @@ export default function Home() {
       </section>
 
       <Footer />
+      <WhatsAppChat />
     </main>
   )
 }

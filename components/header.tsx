@@ -136,7 +136,7 @@ export function Header() {
           {/* Book Now Button */}
           <div className="hidden md:block">
             <Link
-              href="/#booking"
+              href="/book"
               className={cn(
                 "font-[var(--font-body)] text-xs tracking-[0.2em] uppercase px-6 py-3 border transition-all duration-500",
                 scrolled || mobileMenuOpen
@@ -237,7 +237,7 @@ export function Header() {
               Contact
             </Link>
             <Link
-              href="/#booking"
+              href="/book"
               onClick={() => setMobileMenuOpen(false)}
               className="font-[var(--font-body)] text-sm tracking-[0.15em] uppercase text-foreground"
             >
