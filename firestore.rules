@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow anyone to create bookings (for public booking form)
+    match /bookings/{bookingId} {
+      allow create: if isValidBooking();
+      allow read: if false; // No public reading of bookings
+      allow update, delete: if false; // No public updates/deletes
+    }
+    
+    // Allow reading time slots but only system can write
+    match /timeSlots/{slotId} {
+      allow read: if true;
+      allow write: if false; // Only server-side can manage slots
+    }
+    
+    // Helper function to validate booking data
+    function isValidBooking() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['serviceId', 'serviceName', 'date', 'time', 'fullName', 'email', 'phone', 'status', 'createdAt']) &&
+             data.serviceId is string &&
+             data.serviceName is string &&
+             data.date is string &&
+             data.time is string &&
+             data.fullName is string &&
+             data.email is string &&
+             data.phone is string &&
+             data.status == 'pending' &&
+             data.createdAt is string;
+    }
+  }
+}

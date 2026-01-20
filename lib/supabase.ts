@@ -1,0 +1,8 @@
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://cvdqankppairfnwgrufj.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2ZHFhbmtwcGFpcmZud2dydWZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc0NzE3MDgsImV4cCI6MjA4MzA0NzcwOH0.S6zD1tgjFQla3LX3Wdn_8-z1v9eOZlRcYtw_Kkgh1xY'
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2ZHFhbmtwcGFpcmZud2dydWZqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NzQ3MTcwOCwiZXhwIjoyMDgzMDQ3NzA4fQ.UmYQ7j9JzLEw66_x8uUsTPwq5F4HEBGRT63YwfUnV3M'
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey)

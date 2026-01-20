@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .card { border: 1px solid #ddd; padding: 20px; margin: 10px 0; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .approve { background: green; color: white; }
+        .decline { background: red; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        
+        <h2>Bookings</h2>
+        <div class="card">
+            <h3>Virtual Consultation</h3>
+            <p>John Doe - john@example.com</p>
+            <p>2024-01-25 at 10:00 AM</p>
+            <button class="approve">Approve</button>
+            <button class="decline">Decline</button>
+        </div>
+        
+        <h2>Services</h2>
+        <div class="card">
+            <h3>Virtual Consultation</h3>
+            <p>Category: Consultation</p>
+            <p>Price: R250 • Duration: 30 min</p>
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+        
+        <h2>Blog Posts</h2>
+        <div class="card">
+            <h3>Sample Blog Post</h3>
+            <p>By Dr. Smith</p>
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+        
+        <button onclick="alert('Feature coming soon')">Add New Service</button>
+        <button onclick="alert('Feature coming soon')">Add New Blog Post</button>
+    </div>
+</body>
+</html>
