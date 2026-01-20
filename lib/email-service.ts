@@ -1,7 +1,7 @@
 import { Resend } from 'resend'
 import { createBookingConfirmationEmail } from './email-template'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 interface BookingDetails {
   fullName: string
@@ -14,6 +14,11 @@ interface BookingDetails {
 
 export async function sendBookingConfirmation(bookingDetails: BookingDetails) {
   try {
+    if (!resend) {
+      console.warn('Resend API key not configured')
+      return { success: false, error: 'Email service not configured' }
+    }
+    
     const emailHtml = createBookingConfirmationEmail(bookingDetails)
     
     const { data, error } = await resend.emails.send({
@@ -38,6 +43,11 @@ export async function sendBookingConfirmation(bookingDetails: BookingDetails) {
 
 export async function sendPasswordResetEmail(email: string) {
   try {
+    if (!resend) {
+      console.warn('Resend API key not configured')
+      return { success: false, error: 'Email service not configured' }
+    }
+    
     const resetLink = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/reset-password?token=placeholder`
     
     const { data, error } = await resend.emails.send({
